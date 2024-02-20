@@ -1,6 +1,7 @@
+import '@mantine/core/styles.css';
+
 import { AppProvider } from '@/providers/app';
 import { ColorSchemeScript } from '@mantine/core';
-import '@mantine/core/styles.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 

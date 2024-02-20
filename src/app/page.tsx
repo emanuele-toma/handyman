@@ -1,3 +1,5 @@
-export default function Home() {
-  return <h1>Hello World</h1>;
+import { Home } from '@/features/home';
+
+export default function HomeLayout() {
+  return <Home />;
 }
