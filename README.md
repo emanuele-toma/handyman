@@ -23,7 +23,8 @@ npm start
 ### Docker
 
 ```bash
-docker compose up -d toolbox-build
+export NODE_ENV=production
+docker compose up -d
 ```
 
 After running the above commands, the website will be available at localhost:3500.
