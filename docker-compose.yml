@@ -1,10 +1,11 @@
 version: '3'
 services:
   toolbox:
+    container_name: main
     image: node:alpine
     ports:
       - 3500:3500
     volumes:
       - ./:/app
     working_dir: /app
-    command: sh -c 'if [ "$NODE_ENV" = "production" ]; then npm install && npm run build && npm run start; else npm install && npm run dev; fi'
+    command: sh -c 'if [ "${NODE_ENV:-development}" = "production" ]; then npm install && npm run build && npm run start; else npm install && npm run dev; fi'
