@@ -5,5 +5,5 @@ interface AppProviderProps {
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-  return <MantineProvider>{children}</MantineProvider>;
+  return <MantineProvider defaultColorScheme='auto'>{children}</MantineProvider>;
 };
