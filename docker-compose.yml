@@ -1,8 +1,8 @@
 version: '3'
 services:
-  toolbox:
+  handyman:
     container_name: main
-    image: node:alpine
+    image: node:20-alpine
     ports:
       - 3500:3500
     volumes:
