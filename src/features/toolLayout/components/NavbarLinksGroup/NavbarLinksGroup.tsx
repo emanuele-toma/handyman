@@ -1,8 +1,18 @@
 'use client';
 
-import { Box, Collapse, Group, Text, ThemeIcon, UnstyledButton, rem } from '@mantine/core';
-import { IconCalendarStats, IconChevronRight, TablerIconsProps } from '@tabler/icons-react';
+import {
+  Box,
+  Collapse,
+  Group,
+  Text,
+  ThemeIcon,
+  UnstyledButton,
+  rem,
+  useMantineTheme,
+} from '@mantine/core';
+import { IconChevronRight, TablerIconsProps } from '@tabler/icons-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import classes from './NavbarLinksGroup.module.css';
 
@@ -11,19 +21,51 @@ interface LinksGroupProps {
   label: string;
   initiallyOpened?: boolean;
   links?: { label: string; link: string }[];
+  link?: string;
 }
 
-export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksGroupProps) {
+export function NavbarLinksGroup({
+  icon: Icon,
+  label,
+  initiallyOpened,
+  links,
+  link,
+}: LinksGroupProps) {
+  const theme = useMantineTheme();
+  const pathname = usePathname();
+
+  const isActive = !!link && pathname.startsWith(link);
+  const isAnyChildActive = links?.some(link => pathname.startsWith(link.link));
+
   const hasLinks = Array.isArray(links);
-  const [opened, setOpened] = useState(initiallyOpened || false);
-  const items = (hasLinks ? links : []).map(link => (
-    <Link href={link.link} key={link.label} style={{ textDecoration: 'unset' }}>
-      <Text className={classes.link}>{link.label}</Text>
-    </Link>
-  ));
+  const [opened, setOpened] = useState(initiallyOpened || isActive || isAnyChildActive || false);
+
+  const items = (hasLinks ? links : []).map(link => {
+    const isChildActive = pathname === link.link;
+
+    return (
+      <Link href={link.link} key={link.label} style={{ textDecoration: 'unset' }}>
+        <Text
+          className={classes.link}
+          fw={isChildActive ? 600 : undefined}
+          bg={isChildActive ? `${theme.colors.primary[6]}1F` : undefined}>
+          {link.label}
+        </Text>
+      </Link>
+    );
+  });
+
+  const LinkWrapper = ({ children }: { children: React.ReactNode }) =>
+    link ? (
+      <Link href={link} style={{ textDecoration: 'unset' }}>
+        {children}
+      </Link>
+    ) : (
+      <>{children}</>
+    );
 
   return (
-    <>
+    <LinkWrapper>
       <UnstyledButton onClick={() => setOpened(o => !o)} className={classes.control}>
         <Group justify='space-between' gap={0}>
           <Box style={{ display: 'flex', alignItems: 'center' }}>
@@ -46,24 +88,6 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
         </Group>
       </UnstyledButton>
       {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
-    </>
-  );
-}
-
-const mockdata = {
-  label: 'Releases',
-  icon: IconCalendarStats,
-  links: [
-    { label: 'Upcoming releases', link: '/' },
-    { label: 'Previous releases', link: '/' },
-    { label: 'Releases schedule', link: '/' },
-  ],
-};
-
-export function NavbarLinksGroup() {
-  return (
-    <Box mih={220} p='md'>
-      <LinksGroup {...mockdata} />
-    </Box>
+    </LinkWrapper>
   );
 }

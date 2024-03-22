@@ -1,19 +1,21 @@
 'use client';
 
-import { AppShell } from '@mantine/core';
+import { AppShell, Box, BoxProps, ElementProps } from '@mantine/core';
 import { Navbar } from '..';
 
-interface MainLayoutProps {
+interface MainLayoutProps extends BoxProps, ElementProps<'div', keyof BoxProps> {
   children: React.ReactNode;
 }
 
-export function MainLayout({ children }: MainLayoutProps) {
+export function MainLayout({ children, ...props }: MainLayoutProps) {
   return (
-    <AppShell>
+    <AppShell navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: true } }}>
       <AppShell.Navbar>
         <Navbar />
       </AppShell.Navbar>
-      <AppShell.Main>{children}</AppShell.Main>
+      <AppShell.Main>
+        <Box {...props}>{children}</Box>
+      </AppShell.Main>
     </AppShell>
   );
 }
