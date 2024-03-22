@@ -1,14 +1,5 @@
-import {
-  ActionIcon,
-  Checkbox,
-  Code,
-  CopyButton,
-  Group,
-  Stack,
-  Text,
-  Textarea,
-} from '@mantine/core';
-import { IconCheck, IconCopy } from '@tabler/icons-react';
+import { CopyTextarea } from '@/components';
+import { Checkbox, Code, Stack, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { b64decode, b64encode } from '../../utils';
 
@@ -39,22 +30,12 @@ export function B64StringEncoder() {
         encryption algorithm. If you need to encode or decode a file, use the <Code>Files</Code>{' '}
         tab.
       </Text>
-      <Textarea
+      <CopyTextarea
         rows={8}
         label='Value to encode'
         error={encoded === undefined ? 'Value cannot be encoded' : undefined}
         value={decoded}
-        rightSection={
-          <Group h={'100%'} align='start'>
-            <CopyButton value={decoded || ''}>
-              {({ copied, copy }) => (
-                <ActionIcon onClick={copy} variant='transparent' color='dimmed' size={24} m={8}>
-                  {copied ? <IconCheck /> : <IconCopy />}
-                </ActionIcon>
-              )}
-            </CopyButton>
-          </Group>
-        }
+        copyValue={decoded || ''}
         onChange={e => {
           setDecoded(e.currentTarget.value);
 
@@ -69,22 +50,12 @@ export function B64StringEncoder() {
         label='Encode line by line'
         onChange={() => setLineByLine(p => !p)}
       />
-      <Textarea
+      <CopyTextarea
         rows={8}
         label='Value to decode'
         error={decoded === undefined ? 'Value cannot be decoded' : undefined}
         value={encoded}
-        rightSection={
-          <Group h={'100%'} align='start'>
-            <CopyButton value={encoded || ''}>
-              {({ copied, copy }) => (
-                <ActionIcon onClick={copy} variant='transparent' color='dimmed' size={24} m={8}>
-                  {copied ? <IconCheck /> : <IconCopy />}
-                </ActionIcon>
-              )}
-            </CopyButton>
-          </Group>
-        }
+        copyValue={encoded || ''}
         onChange={e => {
           setEncoded(e.currentTarget.value);
 
