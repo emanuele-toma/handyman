@@ -1,5 +1,5 @@
-import { Home } from '@/features/home';
+import { Landing } from '@/features/misc';
 
 export default function HomeLayout() {
-  return <Home />;
+  return <Landing />;
 }

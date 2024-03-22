@@ -3,9 +3,9 @@
 import { Button, Container, Group, Image, List, Text, ThemeIcon, Title, rem } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 import Link from 'next/link';
-import classes from './Home.module.css';
+import classes from './Landing.module.css';
 
-export function Home() {
+export function Landing() {
   return (
     <Container size='md'>
       <div className={classes.inner}>
@@ -14,7 +14,7 @@ export function Home() {
             A <span className={classes.highlight}>modern</span> privacy focused web toolkit
           </Title>
           <Text c='dimmed' mt='md'>
-            Toolbox is designed to streamline your workflow and enhance your productivity. It
+            Handyman is designed to streamline your workflow and enhance your productivity. It
             includes a variety of tools tailored to meet the diverse needs of developers.
           </Text>
 
@@ -32,12 +32,12 @@ export function Home() {
               maximum privacy and convenience. Your data stays with you.
             </List.Item>
             <List.Item>
-              <b>Free and open source</b> – Toolbox is completely free and does not require
+              <b>Free and open source</b> – Handyman is completely free and does not require
               registration. You can use it in any project. All tools are open source under the GNU
               AGPL V3 license.
             </List.Item>
             <List.Item>
-              <b>Modern design</b> – With its modern and pleasing look, Toolbox is not just
+              <b>Modern design</b> – With its modern and pleasing look, Handyman is not just
               functional, but also a joy to use.
             </List.Item>
           </List>
@@ -49,7 +49,7 @@ export function Home() {
               </Button>
             </Link>
             <Link
-              href='https://github.com/emanuele-toma/toolbox'
+              href='https://github.com/emanuele-toma/handyman'
               target='_blank'
               rel='noopener noreferrer'>
               <Button variant='default' radius='xl' size='md' className={classes.control}>
@@ -58,7 +58,7 @@ export function Home() {
             </Link>
           </Group>
         </div>
-        <Image src='/static/images/HomeImage.svg' alt='' className={classes.image} />
+        <Image src='/static/images/HomeImage.svg' alt='Handyman' className={classes.image} />
       </div>
     </Container>
   );
