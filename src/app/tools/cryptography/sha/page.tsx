@@ -1,9 +1,7 @@
 'use client';
 
 import { TOOLS } from '@/config';
-import { SHA256Encoder } from '@/features/sha';
-import { SHA1Encoder } from '@/features/sha/components/SHA1Encoder/SHA1Encoder';
-import { SHA512Encoder } from '@/features/sha/components/SHA512Encoder';
+import { SHA1Encoder, SHA256Encoder, SHA512Encoder, SHAFileEncoder } from '@/features/sha';
 import { ToolPageLayout } from '@/features/toolLayout';
 import { useToolHistory } from '@/hooks';
 import { useEffect } from 'react';
@@ -23,6 +21,7 @@ export default function SHA() {
       <SHA256Encoder />
       <SHA512Encoder />
       <SHA1Encoder />
+      <SHAFileEncoder />
     </ToolPageLayout>
   );
 }
