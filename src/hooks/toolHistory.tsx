@@ -12,12 +12,14 @@ export function useToolHistory() {
   });
 
   const addToHistory = (tool: Tool) => {
-    const newHistory = history.filter(item => item.id !== tool.id);
-    newHistory.unshift({ ...tool });
+    setHistory(history => {
+      const newHistory = history.filter(item => item.id !== tool.id);
+      newHistory.unshift({ ...tool });
 
-    const hasUpdated = JSON.stringify(newHistory) !== JSON.stringify(history);
+      const hasUpdated = JSON.stringify(newHistory) !== JSON.stringify(history);
 
-    if (hasUpdated) setHistory(newHistory.slice(0, LIMIT));
+      return hasUpdated ? newHistory.slice(0, LIMIT) : history;
+    });
   };
 
   return { history, addToHistory };
