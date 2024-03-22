@@ -1,6 +1,6 @@
-# Developer's Toolbox 🧰
+# Handyman 👷
 
-This GitHub project is a collection of various tools for developers, accessible at [toolbox.dekilab.dev](https://toolbox.dekilab.dev).
+This GitHub project is a collection of various tools for developers, accessible at [handyman.dekilab.dev](https://handyman.dekilab.dev).
 
 ## Tools 🛠️
 
