@@ -1,13 +1,14 @@
 'use client';
 
 import { CopyTextarea } from '@/components';
-import { Checkbox, Code, Stack, Text } from '@mantine/core';
+import { Checkbox, Code, Stack, Text, TextInput } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { shaEncode } from '../../utils';
 
 export function SHA256Encoder() {
   const [decoded, setDecoded] = useState<string | undefined>('');
   const [encoded, setEncoded] = useState<string | undefined>('');
+  const [hmac, setHmac] = useState<string | undefined>(undefined);
   const [lineByLine, setLineByLine] = useState(false);
 
   useEffect(() => {
@@ -17,11 +18,11 @@ export function SHA256Encoder() {
         decoded
           ?.split('\n')
           .filter(v => v !== '')
-          .map(v => shaEncode('sha256', v))
+          .map(v => shaEncode('sha256', v, hmac))
           .join('\n')
       );
-    setEncoded(shaEncode('sha256', decoded));
-  }, [decoded, lineByLine]);
+    setEncoded(shaEncode('sha256', decoded, hmac));
+  }, [decoded, lineByLine, hmac]);
 
   return (
     <Stack>
@@ -48,17 +49,22 @@ export function SHA256Encoder() {
               e.currentTarget.value
                 .split('\n')
                 .filter(v => v !== '')
-                .map(v => shaEncode('sha256', v))
+                .map(v => shaEncode('sha256', v, hmac))
                 .join('\n')
             );
 
-          setEncoded(shaEncode('sha256', e.currentTarget.value));
+          setEncoded(shaEncode('sha256', e.currentTarget.value, hmac));
         }}
       />
       <Checkbox
         checked={lineByLine}
         label='Encode line by line'
         onChange={() => setLineByLine(p => !p)}
+      />
+      <TextInput
+        label='HMAC key'
+        placeholder='Optional HMAC key'
+        onChange={e => setHmac(e.currentTarget.value || undefined)}
       />
       <CopyTextarea
         rows={8}

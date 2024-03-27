@@ -1,7 +1,13 @@
 import crypto from 'crypto';
 
-export function arrayBufferToSha(buffer: ArrayBuffer, algorithm: 'sha1' | 'sha256' | 'sha512') {
-  const hash = crypto.createHash(algorithm);
-  hash.update(Buffer.from(buffer));
-  return hash.digest('hex');
+export function arrayBufferToSha(
+  buffer: ArrayBuffer,
+  algorithm: 'sha1' | 'sha256' | 'sha512',
+  hmac?: string
+): string {
+  if (hmac) {
+    return crypto.createHmac(algorithm, hmac).update(Buffer.from(buffer)).digest('hex');
+  } else {
+    return crypto.createHash(algorithm).update(Buffer.from(buffer)).digest('hex');
+  }
 }
