@@ -37,7 +37,7 @@ export const TOOLS = {
     id: 'sha',
     link: '/tools/cryptography/sha',
     label: 'SHA',
-    description: 'Calculate SHA hash of a string',
+    description: 'Calculate SHA hash of a string or file',
     group: GROUPS.cryptography,
   },
   values: (): Tool[] => {
