@@ -19,6 +19,7 @@ export function SHAFileEncoder() {
           { value: 'sha256', label: 'SHA256' },
           { value: 'sha512', label: 'SHA512' },
         ]}
+        checkIconPosition='right'
         value={algorithm}
         onChange={value => setAlgorithm(value as 'sha1' | 'sha256' | 'sha512')}
         label='Algorithm'
