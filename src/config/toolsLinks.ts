@@ -6,14 +6,6 @@ type ToolsLinksType = (Partial<ComponentProps<typeof NavbarLinksGroup>> &
   Pick<ComponentProps<typeof NavbarLinksGroup>, 'icon' | 'label'>)[];
 
 export const TOOLS_LINKS: ToolsLinksType = sortLinks(
-  // TOOLS.map(group => ({
-  //   label: group.group.label,
-  //   icon: group.group.icon,
-  //   links: group.tools.map(tool => ({
-  //     label: tool.label,
-  //     link: tool.link,
-  //   })),
-  // }))
   TOOLS.grouped().map(group => ({
     label: group.group.label,
     icon: group.group.icon,
