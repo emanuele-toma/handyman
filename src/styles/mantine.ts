@@ -1,4 +1,7 @@
 import { createTheme } from '@mantine/core';
+import { Rubik } from 'next/font/google';
+
+const rubik = Rubik({ subsets: ['latin'] });
 
 export const handymanTheme = createTheme({
   primaryColor: 'primary',
@@ -16,5 +19,5 @@ export const handymanTheme = createTheme({
       '#0038b6',
     ],
   },
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: `${rubik.style.fontFamily}, sans-serif`,
 });

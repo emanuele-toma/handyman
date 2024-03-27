@@ -6,9 +6,6 @@ import '@mantine/spotlight/styles.css';
 import { AppProvider } from '@/providers/app';
 import { ColorSchemeScript } from '@mantine/core';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Handyman',
@@ -25,7 +22,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head>
         <ColorSchemeScript defaultColorScheme='dark' />
       </head>
-      <body className={inter.className}>
+      <body>
         <AppProvider>{children}</AppProvider>
       </body>
     </html>
