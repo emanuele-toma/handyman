@@ -30,8 +30,8 @@ export function SHA256Encoder() {
         To encode a string, paste it into the encoding field and the encoded value will update
         automatically. Hashing functions are <b>not reversible</b>, so you cannot decode the value
         back to the original string. This is <b>useful for storing passwords</b> or other sensitive
-        data <b>that you don&apos;t need to decode</b>. If you need to encode or decode a file, use
-        the <Code>Files</Code> tab.
+        data <b>that you don&apos;t need to decode</b>. If you need to encode a file, use the{' '}
+        <Code>Files</Code> tab.
       </Text>
       <CopyTextarea
         rows={8}
