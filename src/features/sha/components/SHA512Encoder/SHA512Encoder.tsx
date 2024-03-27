@@ -3,7 +3,7 @@
 import { CopyTextarea } from '@/components';
 import { Checkbox, Stack } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { sha512encode } from '../../utils';
+import { shaEncode } from '../../utils';
 
 export function SHA512Encoder() {
   const [decoded, setDecoded] = useState<string | undefined>('');
@@ -17,10 +17,10 @@ export function SHA512Encoder() {
         decoded
           ?.split('\n')
           .filter(v => v !== '')
-          .map(sha512encode)
+          .map(v => shaEncode('sha512', v))
           .join('\n')
       );
-    setEncoded(sha512encode(decoded));
+    setEncoded(shaEncode('sha512', decoded));
   }, [decoded, lineByLine]);
 
   return (
@@ -41,11 +41,11 @@ export function SHA512Encoder() {
               e.currentTarget.value
                 .split('\n')
                 .filter(v => v !== '')
-                .map(sha512encode)
+                .map(v => shaEncode('sha512', v))
                 .join('\n')
             );
 
-          setEncoded(sha512encode(e.currentTarget.value));
+          setEncoded(shaEncode('sha512', e.currentTarget.value));
         }}
       />
       <Checkbox

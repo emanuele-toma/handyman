@@ -4,7 +4,7 @@ import { CopyTextarea } from '@/components';
 import { Blockquote, Checkbox, Stack } from '@mantine/core';
 import { IconAlertTriangle } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
-import { sha1encode } from '../../utils';
+import { shaEncode } from '../../utils';
 
 export function SHA1Encoder() {
   const [decoded, setDecoded] = useState<string | undefined>('');
@@ -18,10 +18,10 @@ export function SHA1Encoder() {
         decoded
           ?.split('\n')
           .filter(v => v !== '')
-          .map(sha1encode)
+          .map(v => shaEncode('sha1', v))
           .join('\n')
       );
-    setEncoded(sha1encode(decoded));
+    setEncoded(shaEncode('sha1', decoded));
   }, [decoded, lineByLine]);
 
   return (
@@ -46,11 +46,11 @@ export function SHA1Encoder() {
               e.currentTarget.value
                 .split('\n')
                 .filter(v => v !== '')
-                .map(sha1encode)
+                .map(v => shaEncode('sha1', v))
                 .join('\n')
             );
 
-          setEncoded(sha1encode(e.currentTarget.value));
+          setEncoded(shaEncode('sha1', e.currentTarget.value));
         }}
       />
       <Checkbox
