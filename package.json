@@ -19,6 +19,7 @@
     "@mantine/modals": "^7.5.3",
     "@mantine/notifications": "^7.5.3",
     "@mantine/spotlight": "^7.5.3",
+    "@monaco-editor/react": "^4.6.0",
     "@tabler/icons-react": "^2.47.0",
     "dayjs": "^1.11.10",
     "next": "14.1.0",

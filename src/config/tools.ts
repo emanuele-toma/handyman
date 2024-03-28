@@ -1,4 +1,4 @@
-import { IconShieldLock, TablerIconsProps } from '@tabler/icons-react';
+import { IconJson, IconShieldLock, TablerIconsProps } from '@tabler/icons-react';
 
 export interface ToolGroup {
   id: string;
@@ -20,6 +20,11 @@ export const GROUPS = {
     label: 'Cryptography',
     icon: IconShieldLock,
   },
+  json: <ToolGroup>{
+    id: 'json',
+    label: 'JSON',
+    icon: IconJson,
+  },
   values: (): ToolGroup[] => {
     return Object.values(GROUPS).filter(v => typeof v !== 'function') as ToolGroup[];
   },
@@ -39,6 +44,13 @@ export const TOOLS = {
     label: 'SHA',
     description: 'Calculate SHA hash of a string or file',
     group: GROUPS.cryptography,
+  },
+  json_sorter: <Tool>{
+    id: 'json_sorter',
+    link: '/tools/json/sorter',
+    label: 'JSON Sorter',
+    description: 'Sort JSON object keys alphabetically',
+    group: GROUPS.json,
   },
   values: (): Tool[] => {
     return Object.values(TOOLS).filter(v => typeof v !== 'function') as Tool[];
