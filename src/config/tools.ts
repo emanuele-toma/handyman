@@ -1,4 +1,4 @@
-import { IconJson, IconShieldLock, TablerIconsProps } from '@tabler/icons-react';
+import { IconAbc, IconJson, IconShieldLock, TablerIconsProps } from '@tabler/icons-react';
 
 export interface ToolGroup {
   id: string;
@@ -24,6 +24,11 @@ export const GROUPS = {
     id: 'json',
     label: 'JSON',
     icon: IconJson,
+  },
+  typography: <ToolGroup>{
+    id: 'typography',
+    label: 'Typography',
+    icon: IconAbc,
   },
   values: (): ToolGroup[] => {
     return Object.values(GROUPS).filter(v => typeof v !== 'function') as ToolGroup[];
@@ -51,6 +56,13 @@ export const TOOLS = {
     label: 'JSON Sorter',
     description: 'Sort JSON object keys alphabetically',
     group: GROUPS.json,
+  },
+  big_text: <Tool>{
+    id: 'big_text',
+    link: '/tools/typography/bigtext',
+    label: 'Big Text',
+    description: 'Display text in large font size',
+    group: GROUPS.typography,
   },
   values: (): Tool[] => {
     return Object.values(TOOLS).filter(v => typeof v !== 'function') as Tool[];
