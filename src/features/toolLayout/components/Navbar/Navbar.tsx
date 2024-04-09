@@ -34,7 +34,7 @@ export function Navbar() {
             <Link href={'/tools'}>
               <Logo style={{ width: rem(172) }} />
             </Link>
-            <Code fw={700}>v1.0.0</Code>
+            <Code fw={700}>v0.1.0</Code>
           </Group>
         </div>
 
