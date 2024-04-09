@@ -58,11 +58,7 @@ export function Landing() {
             </Link>
           </Group>
         </div>
-        <Image
-          src='handyman/static/images/HomeImage.svg'
-          alt='Handyman'
-          className={classes.image}
-        />
+        <Image src='/static/images/HomeImage.svg' alt='Handyman' className={classes.image} />
       </div>
     </Container>
   );
