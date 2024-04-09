@@ -1,10 +1,10 @@
-# Developer's Toolbox 🧰
+# Handyman 👷
 
-This GitHub project is a collection of various tools for developers, accessible at [toolbox.dekilab.dev](https://toolbox.dekilab.dev).
+This GitHub project is a collection of various tools for developers, accessible at [handyman.dekilab.dev](https://handyman.dekilab.dev).
 
 ## Tools 🛠️
 
-Our tools are organized into categories for easy navigation. Each tool has a link for quick access. 
+Our tools are organized into categories for easy navigation. Each tool has a link for quick access.
 
 > **Note:** We're still in the process of categorizing our tools. Check back soon for an updated list!
 
@@ -23,7 +23,8 @@ npm start
 ### Docker
 
 ```bash
-docker compose up -d toolbox-build
+export NODE_ENV=production
+docker compose up -d
 ```
 
 After running the above commands, the website will be available at localhost:3500.

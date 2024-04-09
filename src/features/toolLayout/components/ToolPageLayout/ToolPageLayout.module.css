@@ -1,0 +1,53 @@
+.container {
+  @media screen and (max-width: $mantine-breakpoint-xs) {
+    padding-left: rem(32);
+    padding-right: rem(32);
+  }
+
+  @media screen and (min-width: $mantine-breakpoint-xs) {
+    padding-left: rem(48);
+    padding-right: rem(48);
+  }
+
+  @media screen and (min-width: $mantine-breakpoint-sm) {
+    padding-left: rem(64);
+    padding-right: rem(64);
+  }
+
+  @media screen and (min-width: $mantine-breakpoint-md) {
+    padding-left: rem(96);
+    padding-right: rem(96);
+  }
+
+  @media screen and (min-width: $mantine-breakpoint-lg) {
+    padding-left: rem(144);
+    padding-right: rem(144);
+  }
+
+  @media screen and (min-width: $mantine-breakpoint-xl) {
+    padding-left: rem(160);
+    padding-right: rem(160);
+  }
+}
+
+.colorSchemeBackground {
+  @mixin dark {
+    background-color: var(--mantine-color-dark-6);
+  }
+
+  @mixin light {
+    background-color: var(--mantine-color-gray-0);
+  }
+}
+
+.activeTab {
+  &[data-active] {
+    @mixin dark {
+      background-color: var(--mantine-color-dark-7);
+    }
+
+    @mixin light {
+      background-color: var(--mantine-color-white);
+    }
+  }
+}
