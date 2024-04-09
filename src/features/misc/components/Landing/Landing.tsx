@@ -1,5 +1,6 @@
 'use client';
 
+import { BASE_PATH } from '@/config';
 import { Button, Container, Group, Image, List, Text, ThemeIcon, Title, rem } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 import Link from 'next/link';
@@ -58,7 +59,11 @@ export function Landing() {
             </Link>
           </Group>
         </div>
-        <Image src='/static/images/HomeImage.svg' alt='Handyman' className={classes.image} />
+        <Image
+          src={`${BASE_PATH}/handyman/static/images/HomeImage.svg`}
+          alt='Handyman'
+          className={classes.image}
+        />
       </div>
     </Container>
   );
