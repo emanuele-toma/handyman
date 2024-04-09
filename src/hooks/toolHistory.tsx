@@ -1,15 +1,19 @@
 import { Tool } from '@/config';
-import { useLocalStorage } from '@mantine/hooks';
+import { useEffect, useState } from 'react';
 
 type ToolHistoryEntry = Omit<Tool, 'icon'>;
 
 const LIMIT = 10;
 
 export function useToolHistory() {
-  const [history, setHistory] = useLocalStorage<ToolHistoryEntry[]>({
-    key: 'handyman-tool-history',
-    defaultValue: [],
-  });
+  const [history, setHistory] = useState<ToolHistoryEntry[]>([]);
+
+  useEffect(() => {
+    const history = localStorage.getItem('handyman-tool-history');
+    if (history) {
+      setHistory(JSON.parse(history));
+    }
+  }, []);
 
   const addToHistory = (tool: Tool) => {
     setHistory(history => {
@@ -18,7 +22,11 @@ export function useToolHistory() {
 
       const hasUpdated = JSON.stringify(newHistory) !== JSON.stringify(history);
 
-      return hasUpdated ? newHistory.slice(0, LIMIT) : history;
+      if (!hasUpdated) return history;
+
+      localStorage.setItem('handyman-tool-history', JSON.stringify(newHistory.slice(0, LIMIT)));
+
+      return newHistory.slice(0, LIMIT);
     });
   };
 

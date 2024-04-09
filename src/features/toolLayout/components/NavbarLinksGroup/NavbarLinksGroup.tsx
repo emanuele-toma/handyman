@@ -10,14 +10,14 @@ import {
   rem,
   useMantineTheme,
 } from '@mantine/core';
-import { IconChevronRight, TablerIconsProps } from '@tabler/icons-react';
+import { IconChevronRight, IconProps } from '@tabler/icons-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import classes from './NavbarLinksGroup.module.css';
 
 interface LinksGroupProps {
-  icon: (props: TablerIconsProps) => JSX.Element;
+  icon: (props: IconProps) => JSX.Element;
   label: string;
   initiallyOpened?: boolean;
   links?: { label: string; link: string }[];

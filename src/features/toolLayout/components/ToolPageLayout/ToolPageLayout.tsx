@@ -1,7 +1,9 @@
 'use client';
 
+import { Tool } from '@/config';
+import { useToolHistory } from '@/hooks';
 import { Box, Stack, Tabs, Text, Title } from '@mantine/core';
-import { Children as ReactChildren } from 'react';
+import { Children as ReactChildren, useEffect } from 'react';
 import classes from './ToolPageLayout.module.css';
 
 interface ToolPageLayoutProps {
@@ -10,6 +12,7 @@ interface ToolPageLayoutProps {
   tabs: string[];
   defaultTab?: string;
   children: React.ReactNode | React.ReactNode[];
+  tool: Tool;
 }
 
 export function ToolPageLayout({
@@ -18,8 +21,15 @@ export function ToolPageLayout({
   tabs,
   defaultTab,
   children,
+  tool,
 }: ToolPageLayoutProps) {
   const Children = ReactChildren.toArray(children);
+
+  const { addToHistory } = useToolHistory();
+
+  useEffect(() => {
+    addToHistory(tool);
+  }, [tool, addToHistory]);
 
   return (
     <>

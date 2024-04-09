@@ -1,9 +1,9 @@
-import { IconAbc, IconJson, IconShieldLock, TablerIconsProps } from '@tabler/icons-react';
+import { IconAbc, IconJson, IconProps, IconShieldLock } from '@tabler/icons-react';
 
 export interface ToolGroup {
   id: string;
   label: string;
-  icon: (props: TablerIconsProps) => JSX.Element;
+  icon: (props: IconProps) => JSX.Element;
 }
 
 export interface Tool {
