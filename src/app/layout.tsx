@@ -1,5 +1,6 @@
 import '@mantine/core/styles.css';
 
+import { BASE_PATH } from '@/config';
 import { AppProvider } from '@/providers/app';
 import { ColorSchemeScript } from '@mantine/core';
 import type { Metadata } from 'next';
@@ -17,7 +18,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en'>
       <head>
-        <link rel='icon' href='/favicon.ico' sizes='any' />
+        <link rel='icon' href={`${BASE_PATH}/favicon.ico`} sizes='any' />
         <ColorSchemeScript defaultColorScheme='dark' />
       </head>
       <body>
